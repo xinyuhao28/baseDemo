@@ -4,7 +4,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class DemoThread extends Thread {
-    private String name = null;
+    private String name = "123";
 
 
     public DemoThread(/*String name*/) {

@@ -13,7 +13,7 @@ import java.util.concurrent.ThreadPoolExecutor;
 @Controller
 public class Hello {
     @Autowired
-    DemoThread dt;
+    DemoThread demoThread;
 
     @RequestMapping("/index")
     public String sayHello() {
@@ -24,15 +24,15 @@ public class Hello {
         ThreadPoolExecutor
         Collection
 */
-
-
-        dt.start();
-        try {
+        System.out.println("test start");
+       // dt = new DemoThread();
+        demoThread.start();
+        /*try {
             Thread.sleep(1000);
         }catch (InterruptedException e ){
             System.out.println("e = " + e);
 
-        }
+        }*/
 
         return "index";
     }
