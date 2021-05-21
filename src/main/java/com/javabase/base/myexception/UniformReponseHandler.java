@@ -47,7 +47,7 @@ public class UniformReponseHandler<T> {
             return this.sendErrorResponse_UserDefined(exception);
         }*/
 
-        return new CallResultMsg(false, CodeAndMsg.ERRPARAME.getCode(), exception.getCause().getMessage(), null);
+        return new CallResultMsg(false, CodeAndMsg.ERRPARAME.getCode(), exception.getMessage(), null);
     }
     @ExceptionHandler(Exception.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)

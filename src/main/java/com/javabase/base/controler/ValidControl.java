@@ -1,9 +1,7 @@
 package com.javabase.base.controler;
 
 import com.javabase.base.logic.DemoThread;
-import com.javabase.base.myexception.CodeAndMsg;
-import com.javabase.base.myexception.MyTestException;
-import com.javabase.base.myexception.UserDefinedException;
+import com.javabase.base.myexception.*;
 import com.javabase.base.pojo.User;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
@@ -14,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
+import java.util.HashMap;
+import java.util.Map;
 
 //@Controller
 @RestController
@@ -42,11 +42,16 @@ public class ValidControl {
      * @return
      */
     @PostMapping("/h1")
-    public String h1(@RequestBody @Valid User user) {
+    public CallResultMsg h1(@RequestBody @Valid User user) {
 
         System.out.println("Hello.hello" + user);
-        show(user);
-        return "ok";
+      //  show(user);
+      //  return "ok";
+        Map<String, Integer> map = new HashMap();
+        map.put("qingfen", 16);
+        map.put("lantian", 17);
+        map.put("baiyun", 18);
+        return new UniformReponseHandler<Map>().sendSuccessResponse(map);
     }
 
     @RequestMapping("/index")
