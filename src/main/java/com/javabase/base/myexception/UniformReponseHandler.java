@@ -2,13 +2,12 @@ package com.javabase.base.myexception;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -17,6 +16,16 @@ import java.util.List;
 @Slf4j
 @RestControllerAdvice(annotations = RestController.class)
 public class UniformReponseHandler<T> {
+
+    @InitBinder
+    public void initBinder(WebDataBinder binder) {
+        log.info("binder.getFieldDefaultPrefix {}",binder.getFieldDefaultPrefix());
+        log.info("binder.getFieldMarkerPrefix {}",binder.getFieldMarkerPrefix());
+    }
+    @ModelAttribute
+    public void addAttributes(Model model) {
+        model.addAttribute("author", "harry");
+    }
 
     @ResponseStatus(HttpStatus.OK)
     public CallResultMsg sendSuccessResponse() {
