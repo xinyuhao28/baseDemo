@@ -1,6 +1,9 @@
 package com.javabase.base.controler;
 
 import com.javabase.base.logic.DemoThread;
+import com.javabase.base.myexception.CodeAndMsg;
+import com.javabase.base.myexception.MyTestException;
+import com.javabase.base.myexception.UserDefinedException;
 import com.javabase.base.pojo.User;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
@@ -47,7 +50,7 @@ public class ValidControl {
     }
 
     @RequestMapping("/index")
-    public String sayHello() {
+    public String sayHello() throws UserDefinedException {
 /*
 
         ArrayList<User> list;
@@ -66,13 +69,14 @@ public class ValidControl {
 
         }
 */
-
+    //    throw new UserDefinedException(CodeAndMsg.TESTERRPARAME);
         User user = new User("", 0);
         show(user);
-        return "index";
+        return "ok";
     }
 
     public void show(@Valid User info) {
         System.out.println(info);
+        throw new MyTestException("my test errrrrr");
     }
 }
