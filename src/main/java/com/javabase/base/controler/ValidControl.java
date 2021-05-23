@@ -1,5 +1,6 @@
 package com.javabase.base.controler;
 
+import com.javabase.base.interceptor.PermissionCheck;
 import com.javabase.base.logic.DemoThread;
 import com.javabase.base.myexception.*;
 import com.javabase.base.pojo.User;
@@ -42,6 +43,7 @@ public class ValidControl {
      * @return
      */
     @PostMapping("/h1")
+    @PermissionCheck(resourceKey = "test1")
     public CallResultMsg h1(@RequestBody @Valid User user) {
 
         System.out.println("Hello.hello" + user);
