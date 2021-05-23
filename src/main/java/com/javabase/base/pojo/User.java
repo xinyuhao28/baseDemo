@@ -7,11 +7,13 @@ import com.javabase.base.annotation.MyAnno;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
+import java.io.Serializable;
 import java.lang.annotation.Retention;
 
 
-public class User {
+public class User implements Serializable {
 
+    private static final long serialVersionUID = 5205149701434065261L;
     @NotBlank(message = "姓名不能为空")
     private String name;
     @Min(value = 5,message = "age must lessthan 5")
