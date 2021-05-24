@@ -1,5 +1,6 @@
 package com.javabase.base.controler;
 
+import com.javabase.base.aspect.CustomCache;
 import com.javabase.base.interceptor.PermissionCheck;
 import com.javabase.base.logic.DemoThread;
 import com.javabase.base.myexception.*;
@@ -39,6 +40,7 @@ public class ValidControl {
 
     /**
      * 异常统一处理
+     *
      * @param user
      * @return
      */
@@ -47,8 +49,22 @@ public class ValidControl {
     public CallResultMsg h1(@RequestBody @Valid User user) {
 
         System.out.println("Hello.hello" + user);
-      //  show(user);
-      //  return "ok";
+        //  show(user);
+        //  return "ok";
+        Map<String, Integer> map = new HashMap();
+        map.put("qingfen", 16);
+        map.put("lantian", 17);
+        map.put("baiyun", 18);
+        return new UniformReponseHandler<Map>().sendSuccessResponse(map);
+    }
+
+    @PostMapping("/h2")
+    @CustomCache(key = "testKey")
+    public CallResultMsg h2(@RequestBody @Valid User user) {
+
+        System.out.println("Hello.hello" + user);
+        //  show(user);
+        //  return "ok";
         Map<String, Integer> map = new HashMap();
         map.put("qingfen", 16);
         map.put("lantian", 17);
@@ -76,7 +92,7 @@ public class ValidControl {
 
         }
 */
-    //    throw new UserDefinedException(CodeAndMsg.TESTERRPARAME);
+        //    throw new UserDefinedException(CodeAndMsg.TESTERRPARAME);
         User user = new User("", 0);
         show(user);
         return "ok";

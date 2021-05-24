@@ -54,6 +54,7 @@ public class PermissionCheckInterceptor implements HandlerInterceptor {
      */
     private PermissionCheck findPermissionCheck(HandlerMethod handlerMethod) {
         //在方法上寻找注解
+        log.info("--------"+handlerMethod);
         PermissionCheck permission = handlerMethod.getMethodAnnotation(PermissionCheck.class);
         if (permission == null) {
             //在类上寻找注解
