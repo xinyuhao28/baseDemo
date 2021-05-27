@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
+import java.util.stream.Stream;
 
 //@Controller
 @RestController
@@ -101,5 +103,7 @@ public class ValidControl {
     public void show(@Valid User info) {
         System.out.println(info);
         throw new MyTestException("my test errrrrr");
+
+
     }
 }
