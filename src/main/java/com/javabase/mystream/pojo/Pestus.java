@@ -8,6 +8,10 @@ import java.util.List;
 @Slf4j
 
 public class Pestus {
+    public List<Pestu> getPestuList() {
+        return pestuList;
+    }
+
     private List<Pestu> pestuList;
 
     public Pestus() {
@@ -20,7 +24,7 @@ public class Pestus {
         pestuList.add(new Pestu("Owen", 9500, 28, "male", "New York"));
         pestuList.add(new Pestu("Alisa", 7900, 27, "female", "New York"));
 
-        log.info("Persons start");
+        log.info("Persons start"+this);
     }
 
     @Override
